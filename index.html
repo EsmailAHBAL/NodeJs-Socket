@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Socket</h1>
+    <button onclick="sendMsg()">SEND MESSAGE </button>
+    <button onclick="join()">JOIN TO ROOM </button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket=io();
+        socket.on("connect",()=>
+        {
+            console.log("Connected");
+        })
+
+        socket.on('SEVEREMIT',()=>{
+            console.log("SEVER EMIT ",data);
+        })
+         socket.on('msgReceived',()=>{
+             console.log('Message Received');
+         })
+     
+
+        const join =()=>{
+            socket.emit('joinToRoom',()=>
+            console.log('JOINED TO ROOM'))
+        }
+        const sendMsg=()=>{
+
+            socket.emit('sendMsg',()=>
+            {
+                console.log('Messge Sended');
+            })
+        }
+    </script>
+</body>
+</html>
