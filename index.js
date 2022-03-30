@@ -10,14 +10,6 @@ const server = require('http').createServer(app);
 const io =socketIO(server);
 io.on('connection',(socket)=>{
 
-    // console.log("Connection of New User");
-    // socket.on("CLIENTEVENT",data=>{
-    //     const {name,job}=data[1]
-    //     console.log(`NEW EVENT ADDED`,data[0]);
-    //     socket.emit('SEVEREMIT',name)
-
-
-    // })
 
     socket.on('sendMsg',()=>{
         io.to('MyRoom').emit('msgReceived')
